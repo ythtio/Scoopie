@@ -108,7 +108,7 @@ def bruteForce():
             if gridResult[punt[0]][punt[1]] != '_':
                 break
             gridResult[punt[0]][punt[1]] = inputToList()[j+2]
-        if "H7" in gridResult:
+        if inputToList()[-7] in gridResult:
             grids.append(gridResult)
             #print gridResult
 
