@@ -78,6 +78,57 @@ def counterScore(grid):
 
     return score - counterFirst()
 
+#Deze functie gaat alle mogelijkheden af waarin het eiwit zich kan vouwen.
+def cproduct():
+    aListOfList = [["l", "r", "u", "d"] for aantal in range(len(inputToList())-2)]
+    teller = [0,0]
+    gridStart = makeGrid(inputToList())
+    punt = ((len(inputToList()) - 1), (len(inputToList()) - 1))
+    print punt
+    punt = moveAmino(punt, "r")
+    gridStart[punt[0]][punt[1]] = inputToList()[1]
+    print gridStart
+    highScore = 0
+    highScoreList = []
+    indexes = [0] * len(aListOfList)
+
+    while True:
+        teller[0] += 1
+        #yield [l[i] for l, i in zip(aListOfList, indexes)]
+        gridResult = np.copy(gridStart)
+        punt = ((len(inputToList()) - 1), (len(inputToList())))
+        #zm = [l[i] for l, i in zip(aListOfList, indexes)]
+        index = -1
+        for l, i in zip(aListOfList, indexes):
+            index += 1
+            punt = moveAmino(punt, l[i])
+
+            if gridResult[punt[0]][punt[1]] != '_':
+                for i in enumerate(indexes[index+1:]):
+                    if indexes[i[0]+(index+1)] != 3:
+                        indexes[i[0] + (index + 1)] = 3
+                break
+            gridResult[punt[0]][punt[1]] = inputToList()[index + 2]
+        if inputToList()[-1] in gridResult:
+            teller[1] += 1
+            #print zm
+            #print counterScore(gridResult)
+            #print gridResult
+            if counterScore(gridResult) > highScore:
+                highScore = counterScore(gridResult)
+                highScoreList = []
+                highScoreList.append(EiwitStreng(gridResult, highScore))
+            if counterScore(gridResult) == highScore:
+                highScoreList.append(EiwitStreng(gridResult, highScore))
+        j = len(indexes) - 1
+        while True:
+            indexes[j] += 1
+            if indexes[j] < len(aListOfList[j]):
+                break
+            indexes[j] = 0
+            j -= 1
+            if j < 0:
+                return highScoreList
 
 def Monte(n):
     counter = 0
@@ -128,14 +179,6 @@ def Monte(n):
 
 print len(inputToList())
 
-monteUitkomst = Monte(100)
-print len(monteUitkomst)
-for i in monteUitkomst:
-    print i.score
-    print i.grid
-
-print time.clock() - start_time, "seconds"
-
 uitkomst = cproduct()
 
 print len(uitkomst)
@@ -144,6 +187,16 @@ for i in uitkomst:
     print i.grid
 
 
+
+print time.clock() - start_time, "seconds"
+
+start_time = time.clock()
+
+monteUitkomst = Monte(1000)
+print len(monteUitkomst)
+for i in monteUitkomst:
+    print i.score
+    print i.grid
 
 print time.clock() - start_time, "seconds"
 
