@@ -177,7 +177,7 @@ def Monte(n):
     return highScoreList
 
 
-print len(inputToList())
+print  inputToList()
 
 uitkomst = cproduct()
 
@@ -199,4 +199,3 @@ for i in monteUitkomst:
     print i.grid
 
 print time.clock() - start_time, "seconds"
-

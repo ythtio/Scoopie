@@ -1,0 +1,7 @@
+Artikelen:
+https://ac.els-cdn.com/S1672022905030317/1-s2.0-S1672022905030317-main.pdf?_tid=b278bf02-cfd7-11e7-ad14-00000aacb361&acdnat=1511391278_359079e2ca954c72a2bcd3bbac1611fa
+http://www.brown.edu/Research/Istrail_Lab/papers/10.1.1.110.3139.pdf
+https://gupea.ub.gu.se/bitstream/2077/35972/1/gupea_2077_35972_1.pdf
+
+Code:
+http://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
