@@ -5,3 +5,4 @@ https://gupea.ub.gu.se/bitstream/2077/35972/1/gupea_2077_35972_1.pdf
 
 Code:
 http://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
+https://www.quora.com/What-is-main-difference-between-hill-climbing-and-simulated-annealing
