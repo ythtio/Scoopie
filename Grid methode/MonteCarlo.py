@@ -17,8 +17,8 @@ def inputToList():
     n = 0;
     pt = []
     #eiwitInput = raw_input("voer de eiwit in: ")
-    eiwitInput = "hhphhhph"
-    #eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
+    #eiwitInput = "hhphhhph"
+    eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
 
     for i in eiwitInput.upper():
         if i != "H" and i != "P":
@@ -178,7 +178,7 @@ def Monte(n):
 
 
 print  inputToList()
-
+'''
 uitkomst = cproduct()
 
 print len(uitkomst)
@@ -191,8 +191,8 @@ for i in uitkomst:
 print time.clock() - start_time, "seconds"
 
 start_time = time.clock()
-
-monteUitkomst = Monte(1000)
+'''
+monteUitkomst = Monte(10000)
 print len(monteUitkomst)
 for i in monteUitkomst:
     print i.score
