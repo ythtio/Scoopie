@@ -20,6 +20,19 @@ class EiwitStreng:
 
         return self.coordinates
 
+#Functie om het pad te visualiseren.
+def visualPath(grid, proteinString):
+    import networkx as nx
+    import pylab as plt
+
+    G = nx.Graph()
+    for i in range(len(proteinString)):
+        xas, yas = np.where(grid == proteinString[i])
+        G.add_node(proteinString[i], pos=(xas[0], yas[0]))
+    G.add_path(proteinString)
+
+    nx.draw(G, nx.get_node_attributes(G, 'pos'), with_labels=True)
+    plt.show()
 
 # Functie vraagt input aan en zet het om in een array met index.
 def inputToList():
@@ -141,7 +154,7 @@ def Monte(n):
     return highScoreList
 
 
-hogescore = Monte(10000)
+hogescore = Monte(1000000)
 
 print 'lengte: ', len(hogescore)
 for i in hogescore:
