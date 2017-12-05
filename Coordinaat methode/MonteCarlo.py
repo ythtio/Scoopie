@@ -1,5 +1,7 @@
 import time
 from random import randint
+import networkx as nx
+import pylab as plt
 
 start_time = time.clock()
 
@@ -21,15 +23,19 @@ class EiwitStreng:
         return self.coordinates
 
 #Functie om het pad te visualiseren.
-def visualPath(grid, proteinString):
-    import networkx as nx
-    import pylab as plt
+def visualPath(protein):
+
 
     G = nx.Graph()
+    for i in range(len(protein.streng)):
+        G.add_node(protein.streng[i], pos = (protein.coordinates[i][0], protein.coordinates[i][1]))
+    G.add_path(protein.streng)
+    '''
     for i in range(len(proteinString)):
         xas, yas = np.where(grid == proteinString[i])
         G.add_node(proteinString[i], pos=(xas[0], yas[0]))
     G.add_path(proteinString)
+    '''
 
     nx.draw(G, nx.get_node_attributes(G, 'pos'), with_labels=True)
     plt.show()
@@ -40,8 +46,8 @@ def inputToList():
     pt = []
     # eiwitInput = raw_input("voer de eiwit in: ")
     #eiwitInput = "hhphhhph"
-    # eiwitInput = "hhphhhphh"
-    eiwitInput = "PPHPPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH"
+    #eiwitInput = "HPHPPHHPHPPHPHHPPHPH"
+    eiwitInput = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"
 
     for i in eiwitInput.upper():
         if i != "H" and i != "P":
@@ -133,9 +139,10 @@ def Monte(n):
                     forbidDirection.append(directions[direction])
                 if len(forbidDirection) == 4:
                     break
-
-            coordinates[i + 2] = [punt[0], punt[1]]
-            puntStart = punt
+            #print coordinates
+            if len(forbidDirection) != 4:
+                coordinates[i + 2] = [punt[0], punt[1]]
+                puntStart = punt
 
         # print coordinates
         # print 'score:', finalScore(coordinates, protein)
@@ -144,9 +151,9 @@ def Monte(n):
             if finalScore(coordinates, protein) > highScore:
                 highScore = finalScore(coordinates, protein)
                 highScoreList = []
-                highScoreList.append(EiwitStreng(coordinates, highScore, coordinates))
+                highScoreList.append(EiwitStreng(protein.streng[:], highScore, coordinates))
             if finalScore(coordinates, protein) == highScore:
-                highScoreList.append(EiwitStreng(coordinates, highScore, coordinates))
+                highScoreList.append(EiwitStreng(protein.streng[:], highScore, coordinates))
 
                 # print gridResult
                 # counter +=1
@@ -154,11 +161,13 @@ def Monte(n):
     return highScoreList
 
 
-hogescore = Monte(1000000)
+hogescore = Monte(500000)
 
 print 'lengte: ', len(hogescore)
 for i in hogescore:
     print i.score
     print i.coordinates
+    print i.streng
+    visualPath(i)
 
 print time.clock() - start_time, "seconds"
