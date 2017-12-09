@@ -56,7 +56,9 @@ def inputToList():
         pt.append(i + str(n))
         n += 1
 
-    eiwit = EiwitStreng(pt, counterFirst(pt), [])
+    #eiwit = EiwitStreng(pt, counterFirst(pt), [])
+
+    return pt
 
     return eiwit
 
@@ -107,7 +109,7 @@ def Monte(n):
     directions = ["l", "r", "u", "d"]
     highScore = 0
     highScoreList = []
-    protein = inputToList()
+    protein = EiwitStreng(inputToList(), counterFirst(inputToList()), [])
     coordinateStart = protein.coordinates[:]
     print protein.streng
     print protein.score
@@ -161,7 +163,7 @@ def Monte(n):
     return highScoreList
 
 
-hogescore = Monte(500000)
+hogescore = Monte(100000)
 
 print 'lengte: ', len(hogescore)
 for i in hogescore:
