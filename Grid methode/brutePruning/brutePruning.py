@@ -2,8 +2,6 @@ import numpy as np
 from itertools import product
 import time
 
-start_time = time.clock()
-
 class EiwitStreng:
     def __init__(self, grid, score):
         self.grid = grid
@@ -176,18 +174,3 @@ def bruteForce():
             j -= 1
             if j < 0:
                 return highScoreList
-
-print (eiwitList())
-
-uitkomst = bruteForce()
-
-#print uitkomst[0], uitkomst[1]
-
-print (len(uitkomst))
-for i in uitkomst:
-    print (i.score)
-    print (i.grid)
-
-
-print (time.clock() - start_time, "seconds")
-
