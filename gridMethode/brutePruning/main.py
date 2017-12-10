@@ -19,3 +19,4 @@ if __name__ == '__main__':
 
 	# print de totale runtijd van het programma
 	print (time.clock() - startTime, "seconds")
+	
