@@ -1,0 +1,69 @@
+n: amount of amino acids
+State Space: 4**(n-1)
+Upper Bound: 3**(n-2)
+Lower Bound: 
+
+HHPHHHPH:
+
+	n = 8
+	State Space: 4**(7) = 16.384
+	Upper Bound: 3**(6) = 729
+	Lower Bound: 543 (empirical)
+
+HHPHHHPHPHHHPH:
+	
+	n = 14
+	State Space: 4**(13) = 67.108.864
+	Upper Bound: 3**(12) = 531.441
+	Lower Bound: 
+
+HPHPPHHPHPPHPHHPPHPH:
+
+	n = 20
+	State Space: 4**(19) = 274.877.906.944
+	Upper Bound: 3**(18) = 387.420.489
+	Lower Bound:
+
+PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP:
+
+	n = 36
+	State Space: 4**(35) = 1.180.591.620.717.411.303.424
+	Upper Bound: 3**(34) = 16.677.181.699.666.569
+	Lower Bound:
+
+HHPHPHPHPHHHHPHPPPHPPPHPPPPHPPPHPPPHPHHHHPHPHPHPHH:
+
+	n = 50
+	State Space: 4**(49) = 316.912.650.057.057.350.374.175.801.344
+	Upper Bound: 3**(48) = 79.766.443.076.872.509.863.361
+	Lower Bound: 
+
+PPCHHPPCHPPPPCHHHHCHHPPHHPPPPHHPPHPP:
+
+	n = 36
+	State Space: 4**(35) = 1.180.591.620.717.411.303.424
+	Upper Bound: 3**(34) = 16.677.181.699.666.569
+	Lower Bound:
+
+CPPCHPPCHPPCPPHHHHHHCCPCHPPCPCHPPHPC:
+
+	n = 36
+	State Space: 4**(35) = 1.180.591.620.717.411.303.424
+	Upper Bound: 3**(34) = 16.677.181.699.666.569
+	Lower Bound:
+
+HCPHPCPHPCHCHPHPPPHPPPHPPPPHPCPHPPPHPHHHCCHCHCHCHH:
+
+	n = 50
+	State Space: 4**(49) = 316.912.650.057.057.350.374.175.801.344
+	Upper Bound: 3**(48) = 79.766.443.076.872.509.863.361
+	Lower Bound: 
+
+HCPHPHPHCHHHHPCCPPHPPPHPPPPCPPPHPPPHPHHHHCHPHPHPHH:
+
+	n = 50
+	State Space: 4**(49) = 316.912.650.057.057.350.374.175.801.344
+	Upper Bound: 3**(48) = 79.766.443.076.872.509.863.361
+	Lower Bound:
+
+
