@@ -22,7 +22,7 @@ def eiwitList():
     # voegt aan elk aminozuur een index toe en zet het in de eiwit array
     for i in eiwitInput.upper():
         if i != "H" and i != "P":
-            print "Het eiwit mag geen", i, "bevatten"
+            print ("Het eiwit mag geen", i, "bevatten")
             return "Het eiwit mag geen", i, "bevatten"
         eiwit.append(i + str(index))
         index +=1
@@ -38,12 +38,12 @@ def startScore():
     return score
 
 # functie maakt een Grid-Array aan de hand van de ingevoerde eiwit
-def makeGrid(eiwitList):
+def makeGrid(eiwit):
 
     # de grid krijgt 2 maal de lengte van het eiwit - 1 en plaatst het eerste aminozuur in
     # het midden van de grid
-    grid = [["_"] * ((len(eiwitList) * 2) - 1) for i in (range(len(eiwitList * 2) - 1))]
-    grid[len(eiwitList()) - 1][len(eiwitList()) - 1] = eiwitList[0]
+    grid = [["_"] * ((len(eiwit) * 2) - 1) for i in (range(len(eiwit * 2) - 1))]
+    grid[len(eiwitList()) - 1][len(eiwitList()) - 1] = eiwit[0]
 
     # de grid wordt omgezet in een numpy array
     grid = np.array(grid, dtype='S256')
@@ -177,17 +177,17 @@ def bruteForce():
             if j < 0:
                 return highScoreList
 
-print eiwitList()
+print (eiwitList())
 
 uitkomst = bruteForce()
 
 #print uitkomst[0], uitkomst[1]
 
-print len(uitkomst)
+print (len(uitkomst))
 for i in uitkomst:
-    print i.score
-    print i.grid
+    print (i.score)
+    print (i.grid)
 
 
-print time.clock() - start_time, "seconds"
+print (time.clock() - start_time, "seconds")
 

@@ -14,7 +14,7 @@ def inputToList():
 
     for i in eiwitInput.upper():
         if i != 'H' and i != 'P':
-            print "Het eiwit mag geen", i, "bevatten"
+            print ("Het eiwit mag geen", i, "bevatten")
             return "Het eiwit mag geen", i, "bevatten"
         pt.append(i + str(n))
         n +=1
@@ -55,7 +55,7 @@ def counterScore(grids):
         if scores[i] == max(scores):
             highScoreGrids.append(scoreGrids[i])
 
-    print "oplossingen:", max(scores)
+    print ("oplossingen:", max(scores))
     return highScoreGrids
 
 
@@ -113,15 +113,15 @@ def bruteForce():
             #print gridResult
 
         teller += 1
-    print len(grids)
-    print len(paden)
+    print (len(grids))
+    print (len(paden))
     return grids
 
 
 #counterScore(bruteForce())
 
 posibilitys()
-print len(posibilitys())
+print (len(posibilitys()))
 #print len(posibilitys())
 #print len(inputToList())
 
@@ -129,7 +129,7 @@ print len(posibilitys())
 
 #print counterFirst()
 
-print time.clock() - start_time, "seconds"
+print (time.clock() - start_time, "seconds")
 
 
 
