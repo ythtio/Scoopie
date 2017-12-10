@@ -12,8 +12,11 @@ The various programs output the optimal configurations with stabilization of a g
 Prerequisites
 
 Python v2.7 - https://www.python.org/downloads/
+
 NumPy - https://docs.scipy.org/doc/numpy-1.13.0/user/install.html
+
 Matplotlib v2.1.0 - https://matplotlib.org/users/installing.html#macos
+
 NetworkX v2.0 - https://networkx.github.io/
 
 # Running the tests
@@ -23,11 +26,13 @@ In this repository you will find different maps for different methods and algori
 # Built With
 
 Matplotlib - a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms
+
 NetworkX - a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks
 
 # Authors
 
 Youssef Bentaher - Initial work
+
 Lucien Koenekoop - Initial work
 
 # Acknowledgments
