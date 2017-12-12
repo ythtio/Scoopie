@@ -9,13 +9,17 @@ if __name__ == '__main__':
 	print (eiwitList())
 
 	# voert het algoritme uit en bewaart de gevonden oplossingen
-	result = bruteForce()
+	result = brutePruning()
 
-	# print het aantal oplossingen en de grid-vouwing en score per oplossing
-	print (len(result))
+	# print het aantal vouwingen met de hoogste score
+	print ("Aantal Highscore:", len(result))
+
+	x = 0
 	for i in result:
-	    print (i.score)
-	    print (i.grid)
+		x += 1
+		print (x)
+		print (i.grid)
+		print ("__________________________________________________________________") 
 
 	# print de totale runtijd van het programma
-	print (time.clock() - startTime, "seconds")
+	print ("Runtime:", time.clock() - startTime, "seconds")

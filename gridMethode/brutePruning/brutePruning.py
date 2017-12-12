@@ -1,70 +1,11 @@
-import numpy as np
-from itertools import product
-import time
+import sys
+sys.path.append('/Users/Lucien/Documents/GitHub/Scoopie/gridMethode')
+from helpers import *
 
 class EiwitStreng:
     def __init__(self, grid, score):
         self.grid = grid
         self.score = score
-
-# functie zet een eiwit om in een array met aminozuren en index
-def eiwitList():
-
-    index = 0
-    eiwit = []
-
-    # eiwitInput bevat de eiwitstreng
-    eiwitInput = "HHPHHHPH"
-    #eiwitInput = "HHPHHHPHPHHHPH"
-
-    # voegt aan elk aminozuur een index toe en zet het in de eiwit array
-    for i in eiwitInput.upper():
-        if i != "H" and i != "P":
-            print ("Het eiwit mag geen", i, "bevatten")
-            return "Het eiwit mag geen", i, "bevatten"
-        eiwit.append(i + str(index))
-        index +=1
-
-    return eiwit
-
-# functie stelt een beginscore op voor opeenvolgende H's in de streng
-def startScore():
-    score  = 0
-    for i in range(len(eiwitList())-1):
-        if eiwitList()[i][0] == "H" and eiwitList()[i+1][0] == "H":
-            score += 1
-    return score
-
-# functie maakt een Grid-Array aan de hand van de ingevoerde eiwit
-def makeGrid(eiwit):
-
-    # de grid krijgt 2 maal de lengte van het eiwit - 1 en plaatst het eerste aminozuur in
-    # het midden van de grid
-    grid = [["_"] * ((len(eiwit) * 2) - 1) for i in (range(len(eiwit * 2) - 1))]
-    grid[len(eiwitList()) - 1][len(eiwitList()) - 1] = eiwit[0]
-
-    # de grid wordt omgezet in een numpy array
-    grid = np.array(grid, dtype='S256')
-
-    return grid
-
-# functie plaats een nieuwe aminozuur in de grid aan de hand van opgegeven richting
-def moveAmino(point, direction):
-    
-    # maakt een tuple aan voor het punt van het nieuwe aminozuur
-    newPoint = (0,0)
-
-    # plaatst het nieuwe aminozuur
-    if direction == "l":
-        newPoint = (point[0], point[1]-1)
-    elif direction == "r":
-        newPoint = (point[0], point[1]+1)
-    elif direction == "u":
-        newPoint = (point[0]-1, point[1])
-    elif direction == "d":
-        newPoint = (point[0]+1, point[1])
-
-    return newPoint
 
 # functie bepaald de eindscore van de vouwing van het eiwit
 def endScore(grid):
@@ -73,8 +14,9 @@ def endScore(grid):
 
     # checkt voor elk punt op de grid of het een H bevat, en of het punt rechts of onder dit punt
     # ook een H bevat om dit toe te voegen aan de totale score
-    for j in range(len(grid)-1):
-        for k in range(len(grid[j])-1):
+    for j in range(len(grid) - 1):
+        for k in range(len(grid[j]) - 1):
+
             if grid[j][k] != '_' and grid[j][k][0] == 'H':
                 if grid[j+1][k] != '_' and grid[j+1][k][0] == 'H':
                     score += 1
@@ -88,7 +30,7 @@ def endScore(grid):
 
 # functie maakt gebruik van het Brute Force algoritme om alle mogelijkheden af 
 # te gaan waarin het eiwit zich kan vouwen
-def bruteForce():
+def brutePruning():
 
     # maakt een list of list voor de mogelijke moves per aminozuur
     movesList = [["l", "r", "u", "d"] for amino in range(len(eiwitList()) - 2)]
@@ -118,7 +60,7 @@ def bruteForce():
         # voegt een geprobeerde vouwing toe
         counter[0] += 1
 
-        # zet de gridstart om een een numpy grid en reset het punt op het beginpunt (=het tweede aminozuur)
+        # zet de gridstart om in een numpy grid en reset het punt op het beginpunt (=het tweede aminozuur)
         gridResult = np.copy(gridStart)
         punt = ((len(eiwitList()) - 1), (len(eiwitList())))
 
@@ -173,4 +115,7 @@ def bruteForce():
             vouwing[j] = 0
             j -= 1
             if j < 0:
+                print ("Aantal geprobeerde vouwingen:", counter[0])
+                print ("Aantal geslaagde vouwingen:", counter[1])
+                print ("Highscore:", highScore)
                 return highScoreList
